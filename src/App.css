@@ -1,38 +1,263 @@
-.App {
-  text-align: center;
+/********** Template CSS **********/
+:root {
+    --primary: #EAA636;
+    --secondary: #545454;
+    --light: #FDF5EB;
+    --dark: #1E1916;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 60px;
+    z-index: 99;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn.btn-primary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+
+/*** Navbar ***/
+/*** .navbar.fixed-top {
+    display: none;
+    transition: .5s;
+}
+***/
+
+.navbar .navbar-nav .nav-link {
+    padding: 20px 15px;
+    color: var(--dark);
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link  {
+        padding: 10px 0;
+    }
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        right: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+.btn-link {
+  text-decoration: none !important;
+}
+
+.btn-link:hover {
+    color: #0d6efd !important;
+    text-decoration: none !important;
+}
+
+.btn-underline {
+    text-decoration: none !important;
+}
+
+.btn-travel {
+    cursor: pointer;
+}
+
+
+/*** About ***/
+.img-twice::before {
+    position: absolute;
+    content: "";
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    left: 20%;
+    border: 1rem solid var(--light);
+    z-index: -1;
+}
+
+
+/*** Service ***/
+.service-item,
+.service-item * {
+    transition: .3s;
+}
+
+.service-item:hover {
+    margin-top: -10px;
+    background-color: #0d6efd !important;
+}
+
+.service-item:hover * {
+    color: var(--light);
+}
+
+.service-item .service-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+
+.service-item:hover .service-overlay {
+    opacity: 1;
+}
+
+
+/*** Project ***/
+.project-item {
+    position: relative;
+}
+
+.project-item .project-title {
+    position: absolute;
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    text-align: center;
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+.project-item:hover .project-title {
+    color: #FFFFFF;
+    background-color: #0d6efd !important;
+}
+
+
+/*** Footer ***/
+@media (min-width: 992px) {
+    .footer::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        background: var(--secondary);
+    }
+}
+
+.footer-shape::before {
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 100%;
+    top: 0;
+    left: -40px;
+    background: var(--secondary);
+    transform: skew(40deg);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: rgba(255, 255, 255, .5);
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: rgba(255, 255, 255, .5);
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    color: var(--primary);
+    letter-spacing: 1px;
+    box-shadow: none;
 }
